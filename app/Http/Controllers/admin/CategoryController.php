@@ -189,9 +189,10 @@ class CategoryController extends Controller
 
     public function destroy($categoryId, Request $request){
        $category = Category::find($categoryId);
-       $request->session()->flash('error','Category DoseNot Found');
+
        if(empty($category)){
         // return redirect()->route('categories.index');
+        $request->session()->flash('error','Category DoseNot Found');
 
 
         return response()->json([
