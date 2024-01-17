@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\admin\HomeController;
+use App\Http\Controllers\admin\SubCategoryController;
 use App\Http\Controllers\admin\TempImagesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminLoginController;
@@ -49,6 +50,16 @@ Route::group(['prefix' => 'admin'],function(){
 
         Route::put('/categories/{category}',[CategoryController::class,'update'])->name('categories.update');
         Route::delete('/categories/{category}',[CategoryController::class,'destroy'])->name('categories.delete');
+
+
+        // sub Category Routse
+        Route::get('/sub-categories/create',[SubCategoryController::class,'create'])->name('sub-categories.create');
+        Route::post('/sub-categories',[SubCategoryController::class,'store'])->name('sub-categories.store');
+        Route::get('/sub-categories/index',[SubCategoryController::class,'index'])->name('sub-categories.index');
+        Route::get('/sub-categories/{category}/edit',[SubCategoryController::class,'edit'])->name('sub-categories.edit');
+        Route::put('/sub-categories/{subcategory}',[SubCategoryController::class,'update'])->name('sub-categories.update');
+        Route::delete('/sub-categories/{subCategory}',[SubCategoryController::class,'destroy'])->name('sub-categories.delete');
+
 
         // Image route
         Route::post('/upload-temp-image',[TempImagesController::class,'create'])->name('temp-images.create');
